@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Users\\Source\\Prc\\PrcProject\\Demo\\MyStudioApp\\MyStudioApp.csproj": {}
+    "D:\\Users\\Source\\Prc\\PrcProject\\PrcProject\\MyStudioApp\\MyStudioApp.csproj": {}
   },
   "projects": {
-    "D:\\Users\\Source\\Prc\\PrcProject\\Demo\\MyStudioApp\\MyStudioApp.csproj": {
+    "D:\\Users\\Source\\Prc\\PrcProject\\PrcProject\\MyStudioApp\\MyStudioApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\Source\\Prc\\PrcProject\\Demo\\MyStudioApp\\MyStudioApp.csproj",
+        "projectUniqueName": "D:\\Users\\Source\\Prc\\PrcProject\\PrcProject\\MyStudioApp\\MyStudioApp.csproj",
         "projectName": "MyStudioApp",
-        "projectPath": "D:\\Users\\Source\\Prc\\PrcProject\\Demo\\MyStudioApp\\MyStudioApp.csproj",
+        "projectPath": "D:\\Users\\Source\\Prc\\PrcProject\\PrcProject\\MyStudioApp\\MyStudioApp.csproj",
         "packagesPath": "C:\\Users\\khoan\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\Source\\Prc\\PrcProject\\Demo\\MyStudioApp\\obj\\",
+        "outputPath": "D:\\Users\\Source\\Prc\\PrcProject\\PrcProject\\MyStudioApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
