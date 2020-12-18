@@ -41,7 +41,7 @@ namespace MyStudioApp.Controllers
             return account;
         }
         // Post: api/Login
-        [HttpPost("/login")]
+        [HttpPost("/api/Accounts/login")]
         public async Task<ActionResult<Account>> LoginAccount([FromBody] Account account)
         {
             var result = await _context.Accounts.FirstAsync(user => user.Username.Equals(account.Username) && user.Password.Equals(account.Password));
