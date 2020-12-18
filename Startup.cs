@@ -30,7 +30,7 @@ namespace MyStudioApp
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyStudioApp", Version = "v1" });
@@ -51,7 +51,7 @@ namespace MyStudioApp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-         
+
             }
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyStudioApp v1"));

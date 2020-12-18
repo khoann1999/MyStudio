@@ -44,7 +44,7 @@ namespace MyStudioApp.Controllers
         [HttpPost("/api/Accounts/login")]
         public async Task<ActionResult<Account>> LoginAccount([FromBody] Account account)
         {
-            var result = await _context.Accounts.Include(actor => actor.Actor).FirstAsync(user => user.Username.Equals(account.Username) && user.Password.Equals(account.Password));
+            var result = await _context.Accounts.Where(user => user.Username.Equals(account.Username) && user.Password.Equals(account.Password)).Include(a => a.Actor).FirstAsync();
 
             if (result == null)
             {
@@ -53,7 +53,6 @@ namespace MyStudioApp.Controllers
 
             return result;
         }
-
         // PUT: api/Accounts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
