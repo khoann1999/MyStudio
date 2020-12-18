@@ -40,18 +40,18 @@ namespace MyStudioApp.Controllers
 
             return account;
         }
-        // GET: api/Accounts/5
-        [HttpPost("{username}/{password}")]
-        public async Task<ActionResult<Account>> GetAccount(string username,string password)
+        // Post: api/Login
+        [HttpPost("/login")]
+        public async Task<ActionResult<Account>> LoginAccount([FromBody] Account account)
         {
-            var account = await _context.Accounts.FirstAsync(user => user.Username.Equals(username) && user.Password.Equals(password));
+            var result = await _context.Accounts.FirstAsync(user => user.Username.Equals(account.Username) && user.Password.Equals(account.Password));
 
-            if (account == null)
+            if (result == null)
             {
                 return NotFound();
             }
 
-            return account;
+            return result;
         }
         // PUT: api/Accounts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
