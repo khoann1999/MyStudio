@@ -22,6 +22,7 @@ namespace MyStudioApp.Models
         public virtual DbSet<Scene> Scenes { get; set; }
         public virtual DbSet<SceneActor> SceneActors { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
@@ -66,8 +67,6 @@ namespace MyStudioApp.Models
             {
                 entity.ToTable("Scene");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.DateBegin).HasColumnType("date");
 
                 entity.Property(e => e.DateEnd).HasColumnType("date");
@@ -75,19 +74,11 @@ namespace MyStudioApp.Models
                 entity.Property(e => e.Script).HasMaxLength(500);
 
                 entity.Property(e => e.Title).HasMaxLength(500);
-
-                entity.HasOne(d => d.IdNavigation)
-                    .WithOne(p => p.Scene)
-                    .HasForeignKey<Scene>(d => d.Id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Scene_SceneActor");
             });
 
             modelBuilder.Entity<SceneActor>(entity =>
             {
                 entity.ToTable("SceneActor");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.ActFrom).HasMaxLength(50);
 
@@ -105,6 +96,11 @@ namespace MyStudioApp.Models
                     .WithMany(p => p.SceneActors)
                     .HasForeignKey(d => d.ActorUsername)
                     .HasConstraintName("FK_SceneActor_Actor");
+
+                entity.HasOne(d => d.Scene)
+                    .WithMany(p => p.SceneActors)
+                    .HasForeignKey(d => d.SceneId)
+                    .HasConstraintName("FK_SceneActor_Scene");
             });
 
             OnModelCreatingPartial(modelBuilder);

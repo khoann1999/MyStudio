@@ -78,21 +78,7 @@ namespace MyStudioApp.Controllers
         public async Task<ActionResult<SceneActor>> PostSceneActor(SceneActor sceneActor)
         {
             _context.SceneActors.Add(sceneActor);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (SceneActorExists(sceneActor.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetSceneActor", new { id = sceneActor.Id }, sceneActor);
         }
