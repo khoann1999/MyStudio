@@ -22,7 +22,6 @@ namespace MyStudioApp.Models
         public virtual DbSet<Scene> Scenes { get; set; }
         public virtual DbSet<SceneActor> SceneActors { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
@@ -90,7 +89,17 @@ namespace MyStudioApp.Models
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
+                entity.Property(e => e.ActFrom).HasMaxLength(50);
+
+                entity.Property(e => e.ActTo).HasMaxLength(50);
+
                 entity.Property(e => e.ActorUsername).HasMaxLength(50);
+
+                entity.Property(e => e.Character)
+                    .HasMaxLength(50)
+                    .HasColumnName("character");
+
+                entity.Property(e => e.Status).HasMaxLength(50);
 
                 entity.HasOne(d => d.ActorUsernameNavigation)
                     .WithMany(p => p.SceneActors)
