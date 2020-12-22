@@ -31,7 +31,7 @@ namespace MyStudioApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Actor>> GetActor(string id)
         {
-            var actor = await _context.Actors.FindAsync(id);
+            var actor = await _context.Actors.Where(actor => actor.Username.Equals(id)).Include(scene => scene.SceneActors).FirstAsync();
 
             if (actor == null)
             {
